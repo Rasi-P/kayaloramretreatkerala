@@ -1,0 +1,58 @@
+import { motion } from "framer-motion";
+import { Search, Menu, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const navItems = [
+  { label: "Overview", href: "#overview" },
+  { label: "Rooms", href: "#rooms" },
+  { label: "Location", href: "#location" },
+  { label: "Property Rules", href: "#rules" },
+  { label: "Similar Properties", href: "#similar" },
+];
+
+export const Header = () => {
+  return (
+    <motion.header
+      initial={{ y: -40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50"
+    >
+      <div className="container flex items-center justify-between h-16 md:h-20">
+        <a href="#" className="flex items-center gap-2">
+          <div className="h-9 w-9 rounded-full gradient-lake grid place-items-center text-primary-foreground shadow-glow">
+            <MapPin className="h-4 w-4" />
+          </div>
+          <span className="font-display text-xl font-semibold tracking-tight">
+            Kayaloram
+          </span>
+        </a>
+
+        <nav className="hidden lg:flex items-center gap-8">
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors relative group"
+            >
+              {item.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-500" />
+            </a>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" size="icon" className="hidden md:inline-flex">
+            <Search className="h-4 w-4" />
+          </Button>
+          <Button variant="default" size="sm" className="hidden md:inline-flex bg-primary hover:bg-primary/90">
+            Login
+          </Button>
+          <Button variant="ghost" size="icon" className="lg:hidden">
+            <Menu className="h-5 w-5" />
+          </Button>
+        </div>
+      </div>
+    </motion.header>
+  );
+};
