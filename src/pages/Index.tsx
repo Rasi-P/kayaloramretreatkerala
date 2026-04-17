@@ -1,16 +1,47 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Header } from "@/components/site/Header";
+import { Breadcrumbs } from "@/components/site/Breadcrumbs";
+import { HeroGallery } from "@/components/site/HeroGallery";
+import { BookingBar } from "@/components/site/BookingBar";
+import { Overview } from "@/components/site/Overview";
+import { Rooms } from "@/components/site/Rooms";
+import { Host } from "@/components/site/Host";
+import { Location } from "@/components/site/Location";
+import { Rules } from "@/components/site/Rules";
+import { SimilarProperties } from "@/components/site/SimilarProperties";
+import { FAQ } from "@/components/site/FAQ";
+import { AttractionsMarquee } from "@/components/site/AttractionsMarquee";
+import { Footer } from "@/components/site/Footer";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <>
+      {/* SEO */}
+      <title>Kayaloram Retreat Kerala — 102 Cinemon Lake View Homestay | Alleppey</title>
+      <meta
+        name="description"
+        content="Book 102 Cinemon at Kayaloram Retreat — a lakefront homestay on Kerala's backwaters in Alleppey. Queen bed, free cancellation, ₹4,085/night."
+      />
+      <link rel="canonical" href="/" />
+
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main>
+          <Breadcrumbs />
+          <HeroGallery />
+          <BookingBar />
+          <Overview />
+          <Rooms />
+          <Host />
+          <Location />
+          <Rules />
+          <SimilarProperties />
+          <FAQ />
+          <AttractionsMarquee />
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
