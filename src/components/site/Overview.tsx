@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import {
   Wifi, Coffee, Wind, Tv, Bath, Car, Shield, KeySquare,
   UtensilsCrossed, Sparkles, Droplets, BellRing,
@@ -19,11 +19,12 @@ const amenities = [
   { icon: BellRing, label: "Room Service" },
 ];
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: (i: number) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.5, delay: i * 0.04, ease: [0.22, 1, 0.36, 1] },
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay: i * 0.04, ease: [0.22, 1, 0.36, 1] as const },
   }),
 };
 
