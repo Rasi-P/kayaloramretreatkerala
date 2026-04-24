@@ -29,11 +29,11 @@ export const HeroGallery = () => {
               <Star className="h-3 w-3 fill-current" /> New
             </span>
           </div>
-          <h1 className="font-display text-3xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] text-balance max-w-4xl">
+          <h1 className="font-display text-2xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] text-balance max-w-4xl">
             Kayaloram Retreat Kerala
             <span className="block text-accent italic font-medium">102 Cinemon · Homeyhuts</span>
           </h1>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs md:text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4 text-accent" /> Alappuzha, Kerala · 35.5 km from city centre</span>
             <span className="inline-flex items-center gap-1.5"><Bed className="h-4 w-4 text-accent" /> 1 Bedroom · 1 Queen Bed</span>
             <span className="inline-flex items-center gap-1.5"><Users className="h-4 w-4 text-accent" /> Sleeps 2 (+2 extra)</span>
@@ -41,7 +41,7 @@ export const HeroGallery = () => {
         </div>
 
         {/* Photo grid */}
-        <div className="grid grid-cols-4 grid-rows-2 gap-2 md:gap-3 h-[60vh] md:h-[72vh] rounded-3xl overflow-hidden relative shadow-elegant">
+        <div className="grid grid-cols-4 grid-rows-2 gap-2 md:gap-3 h-[35vh] md:h-[72vh] rounded-3xl overflow-hidden relative shadow-elegant">
           <motion.div
             className="col-span-4 md:col-span-2 row-span-2 relative overflow-hidden group"
             whileHover={{ scale: 1.01 }}
@@ -80,9 +80,10 @@ export const HeroGallery = () => {
           ))}
 
           {/* View all photos button */}
-          <button className="absolute bottom-4 right-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-background/95 backdrop-blur text-foreground text-sm font-medium shadow-elegant hover:bg-background transition-all hover:scale-105">
+          <button className="absolute top-4 right-4 md:top-auto md:bottom-4 md:right-4 inline-flex items-center gap-2 px-3 py-2 md:px-4 md:py-2.5 rounded-full bg-background/95 backdrop-blur text-foreground text-xs md:text-sm font-medium shadow-elegant hover:bg-background transition-all hover:scale-105">
             <Camera className="h-4 w-4" />
-            View all 35 photos
+            <span className="hidden md:inline">View all 35 photos</span>
+            <span className="md:hidden">All photos</span>
           </button>
 
           {/* Mobile preview strip */}

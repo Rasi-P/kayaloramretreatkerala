@@ -18,7 +18,7 @@ const features = [
 ];
 
 export const Rooms = () => (
-  <section id="rooms" className="bg-gradient-to-b from-background to-muted/30 py-16 md:py-24">
+  <section id="rooms" className="bg-gradient-to-b from-background to-muted/30 py-10 md:py-24">
     <div className="container">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -65,11 +65,11 @@ export const Rooms = () => (
           <h3 className="font-display text-2xl font-semibold mb-1">102 Cinemon</h3>
           <p className="text-sm text-accent font-medium mb-4">Lake View · Sleeps 2</p>
 
-          <div className="grid grid-cols-2 gap-2 mb-5">
+          <div className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory gap-3 mb-6 pb-2 -mx-6 px-6 lg:mx-0 lg:px-0">
             {features.map((f) => (
-              <div key={f.label} className="flex items-center gap-2 text-sm text-muted-foreground">
-                <f.icon className="h-4 w-4 text-secondary flex-shrink-0" />
-                {f.label}
+              <div key={f.label} className="flex flex-col items-center justify-center gap-2 p-3 rounded-2xl bg-muted/40 border border-border/50 min-w-[80px] snap-center flex-shrink-0 text-center">
+                <f.icon className="h-5 w-5 text-secondary" />
+                <span className="text-[10px] leading-tight text-muted-foreground font-medium">{f.label}</span>
               </div>
             ))}
           </div>

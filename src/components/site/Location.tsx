@@ -11,7 +11,7 @@ const attractions = [
 ];
 
 export const Location = () => (
-  <section id="location" className="bg-gradient-to-b from-muted/30 to-background py-16 md:py-24">
+  <section id="location" className="bg-gradient-to-b from-muted/30 to-background py-10 md:py-24">
     <div className="container">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -32,7 +32,7 @@ export const Location = () => (
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="relative h-[420px] rounded-3xl overflow-hidden shadow-elegant border border-border group cursor-pointer"
+        className="relative h-[280px] md:h-[420px] rounded-3xl overflow-hidden shadow-elegant border border-border group cursor-pointer"
       >
         <iframe
           src="https://www.openstreetmap.org/export/embed.html?bbox=76.2,9.4,76.5,9.7&layer=mapnik&marker=9.5,76.35"
@@ -49,7 +49,7 @@ export const Location = () => (
       {/* Attractions */}
       <div className="mt-12">
         <h3 className="font-display text-2xl md:text-3xl font-semibold mb-6">Top Attractions Nearby</h3>
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none scrollbar-hide md:grid-cols-3 gap-4 md:gap-5 pb-4 md:pb-0">
           {attractions.map((a, i) => (
             <motion.a
               key={a.name}
@@ -58,7 +58,7 @@ export const Location = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group relative h-72 rounded-3xl overflow-hidden block shadow-soft hover:shadow-elegant transition-all"
+              className="group relative min-w-[260px] md:min-w-0 snap-center h-64 md:h-72 rounded-3xl overflow-hidden block shadow-soft hover:shadow-elegant transition-all"
             >
               <img
                 src={a.img}

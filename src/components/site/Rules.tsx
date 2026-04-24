@@ -3,7 +3,7 @@ import { Clock, Users, IdCard, Ban } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const Rules = () => (
-  <section id="rules" className="container py-16 md:py-24">
+  <section id="rules" className="container py-10 md:py-24">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -15,7 +15,7 @@ export const Rules = () => (
       <h2 className="font-display text-3xl md:text-5xl font-semibold">House rules at <em className="text-accent not-italic">Kayaloram</em></h2>
     </motion.div>
 
-    <div className="grid md:grid-cols-2 gap-4 mb-8">
+    <div className="grid grid-cols-2 gap-3 md:gap-4 mb-8">
       {[
         { icon: Clock, label: "Check-in", value: "2:00 PM" },
         { icon: Clock, label: "Check-out", value: "11:00 AM" },
@@ -26,14 +26,14 @@ export const Rules = () => (
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex items-center gap-4 p-6 rounded-3xl gradient-mist border border-border"
+          className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-2 md:gap-4 p-4 md:p-6 rounded-3xl gradient-mist border border-border"
         >
-          <div className="h-14 w-14 rounded-2xl bg-card grid place-items-center text-accent shadow-soft">
+          <div className="h-10 w-10 md:h-14 md:w-14 rounded-xl md:rounded-2xl bg-card grid place-items-center text-accent shadow-soft">
             <c.icon className="h-6 w-6" />
           </div>
           <div>
             <p className="text-xs uppercase tracking-wider text-muted-foreground font-medium">{c.label}</p>
-            <p className="font-display text-2xl font-semibold">{c.value}</p>
+            <p className="font-display text-lg md:text-2xl font-semibold">{c.value}</p>
           </div>
         </motion.div>
       ))}

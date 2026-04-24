@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Star, MessageCircle, Clock, Globe } from "lucide-react";
 
 export const Host = () => (
-  <section className="container py-16 md:py-24">
+  <section className="container py-10 md:py-24">
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}

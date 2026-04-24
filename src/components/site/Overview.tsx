@@ -1,8 +1,9 @@
 import { motion, type Variants } from "framer-motion";
 import {
   Wifi, Coffee, Wind, Tv, Bath, Car, Shield, KeySquare,
-  UtensilsCrossed, Sparkles, Droplets, BellRing,
+  UtensilsCrossed, Sparkles, Droplets, BellRing, MessageCircle
 } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const amenities = [
   { icon: KeySquare, label: "Caretaker & Key" },
@@ -29,7 +30,7 @@ const fadeUp: Variants = {
 };
 
 export const Overview = () => (
-  <section id="overview" className="container py-16 md:py-24">
+  <section id="overview" className="container py-10 md:py-24">
     <div className="grid lg:grid-cols-[1fr_420px] gap-12">
       <div>
         <motion.div
@@ -44,20 +45,8 @@ export const Overview = () => (
           </h2>
           <div className="space-y-6 text-muted-foreground leading-relaxed text-base md:text-lg max-w-2xl">
             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <strong className="text-foreground block mb-1">Indoor Spaces</strong>
-              <p>Step inside to discover airy, light-filled spaces designed for comfort and connection. Bedroom 102 Cinemon is located on the ground floor and features a queen-size bed, lake view, en-suite bathroom, AC, wardrobe, work desk, and electric kettle. The expansive lawn area features a rain dance shower setup with music and lights—perfect for celebrations and group fun.</p>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <strong className="text-foreground block mb-1">Unveiling the Homestay Spacious Living Experience</strong>
-              <p>Instead of enclosed walls, life here flows outdoors. Relax in the open lawn area, enjoy board games like carrom, or unwind with soft music under the open sky.</p>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <strong className="text-foreground block mb-1">Modern Kitchen & Dining</strong>
-              <p>The kitchen is equipped for light cooking and heating. Complimentary drinking water (1L per room) is provided; additional water is available at ₹20 per liter.</p>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <strong className="text-foreground block mb-1">Comfortable Bedrooms & Bathrooms</strong>
-              <p>The bedroom accommodates couples and 2 extra guests comfortably. The attached bathroom features modern fittings, geyser, shower, sink with mirror, exhaust fan, bath towels, and basic toiletries.</p>
+              <strong className="text-foreground block mb-1">Light-Filled Spaces & Outdoor Living</strong>
+              <p>Step inside to discover airy spaces designed for comfort. The bedroom features a queen-size bed, lake views, and modern amenities including an en-suite bathroom. Life here flows outdoors. Relax in the open lawn area or unwind by the backwaters. A kitchenette is equipped for light cooking, ensuring a hassle-free stay.</p>
             </motion.div>
             <p className="text-sm font-medium italic text-accent">
               A caretaker is available at the property to assist guests for a comfortable stay and manage day-to-day upkeep.
@@ -71,7 +60,7 @@ export const Overview = () => (
             <h3 className="font-display text-2xl md:text-3xl font-semibold">Amenities</h3>
             <button className="text-sm font-medium text-accent hover:underline">View All →</button>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          <div className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory gap-3 pb-2 -mx-4 px-4 lg:mx-0 lg:px-0">
             {amenities.map((a, i) => (
               <motion.div
                 key={a.label}
@@ -80,12 +69,12 @@ export const Overview = () => (
                 whileInView="show"
                 viewport={{ once: true, margin: "-50px" }}
                 variants={fadeUp}
-                className="group flex items-center gap-3 p-4 rounded-2xl bg-card border border-border/60 hover:border-accent/40 hover-lift cursor-default"
+                className="group flex flex-col items-center justify-center gap-2 p-4 rounded-3xl bg-card border border-border/60 hover:border-accent/40 hover-lift cursor-default min-w-[100px] snap-center flex-shrink-0 text-center"
               >
                 <div className="h-10 w-10 rounded-xl gradient-mist grid place-items-center text-primary group-hover:gradient-sunset group-hover:text-accent-foreground transition-all duration-500">
                   <a.icon className="h-4 w-4" />
                 </div>
-                <span className="text-sm font-medium">{a.label}</span>
+                <span className="text-[11px] font-medium leading-tight">{a.label}</span>
               </motion.div>
             ))}
           </div>
@@ -95,19 +84,19 @@ export const Overview = () => (
       {/* Sticky booking card desktop */}
       <aside className="hidden lg:block">
         <div className="sticky top-28">
-          <BookingCard />
+          <ContactCard />
         </div>
       </aside>
     </div>
 
     {/* Mobile booking card */}
     <div className="lg:hidden mt-10">
-      <BookingCard />
+      <ContactCard />
     </div>
   </section>
 );
 
-const BookingCard = () => (
+const ContactCard = () => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}

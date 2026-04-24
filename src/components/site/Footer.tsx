@@ -3,7 +3,7 @@ import { MapPin, Instagram, Facebook, Twitter } from "lucide-react";
 export const Footer = () => (
   <footer className="bg-primary text-primary-foreground">
     <div className="container py-16">
-      <div className="grid md:grid-cols-4 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10">
         <div>
           <div className="flex items-center gap-4 mb-4">
             <img src="/logo-transparent.png" alt="Kayaloram Logo" className="h-16 md:h-20 w-auto object-contain brightness-0 invert" />

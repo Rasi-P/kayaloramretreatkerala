@@ -18,9 +18,9 @@ export const Header = () => {
       className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50"
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
-        <a href="#" className="flex items-center gap-3">
-          <img src="/logo-transparent.png" alt="Kayaloram Logo" className="h-14 md:h-16 w-auto object-contain" />
-          <span className="font-display text-2xl font-semibold tracking-tight">
+        <a href="#" className="flex items-center gap-2 md:gap-3">
+          <img src="/logo-transparent.png" alt="Kayaloram Logo" className="h-10 md:h-16 w-auto object-contain" />
+          <span className="font-display text-xl md:text-2xl font-semibold tracking-tight">
             Kayaloram
           </span>
         </a>
@@ -38,25 +38,19 @@ export const Header = () => {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" className="hidden md:inline-flex">
-            <Search className="h-4 w-4" />
-          </Button>
+        <div className="flex items-center gap-1 md:gap-2">
           <a href="tel:+911234567890">
-            <Button variant="outline" size="sm" className="hidden md:inline-flex gap-2 mr-2">
+            <Button variant="outline" size="icon" className="md:w-auto md:px-4 md:gap-2 h-9 w-9 md:h-10 rounded-full md:rounded-xl">
               <Phone className="h-4 w-4" />
-              Call
+              <span className="hidden md:inline">Call</span>
             </Button>
           </a>
           <a href="https://wa.me/911234567890" target="_blank" rel="noreferrer">
-            <Button variant="default" size="sm" className="hidden md:inline-flex bg-[#25D366] hover:bg-[#128C7E] text-white gap-2">
+            <Button variant="default" size="icon" className="bg-[#25D366] hover:bg-[#128C7E] text-white md:w-auto md:px-4 md:gap-2 h-9 w-9 md:h-10 rounded-full md:rounded-xl">
               <MessageCircle className="h-4 w-4" />
-              WhatsApp
+              <span className="hidden md:inline">WhatsApp</span>
             </Button>
           </a>
-          <Button variant="ghost" size="icon" className="lg:hidden">
-            <Menu className="h-5 w-5" />
-          </Button>
         </div>
       </div>
     </motion.header>
