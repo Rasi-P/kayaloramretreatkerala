@@ -31,10 +31,10 @@ export const FAQ = () => (
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="mb-10 max-w-3xl"
+      className="mb-8 md:mb-10 max-w-3xl"
     >
       <p className="text-xs uppercase tracking-[0.2em] text-accent font-semibold mb-3">Questions & Answers</p>
-      <h2 className="font-display text-3xl md:text-5xl font-semibold text-balance">
+      <h2 className="font-display text-2xl md:text-5xl font-semibold text-balance">
         Everything you might want to know before you book.
       </h2>
     </motion.div>

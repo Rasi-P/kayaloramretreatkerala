@@ -25,15 +25,17 @@ export const Rooms = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex items-end justify-between mb-10"
+        className="mb-8 md:mb-10"
       >
-        <div>
-          <p className="text-xs uppercase tracking-[0.2em] text-accent font-semibold mb-3">Choose your stay</p>
-          <h2 className="font-display text-3xl md:text-5xl font-semibold">Room Options <span className="text-muted-foreground font-normal text-2xl">(1)</span></h2>
-        </div>
-        <div className="hidden md:flex items-center gap-2 text-sm">
-          <span className="px-3 py-1.5 rounded-full bg-secondary/10 text-secondary font-medium">Free Cancellation</span>
-          <span className="px-3 py-1.5 rounded-full bg-accent/10 text-accent font-medium">₹0 Payment</span>
+        <p className="text-xs uppercase tracking-[0.2em] text-accent font-semibold mb-3">Choose your stay</p>
+        <div className="flex items-end justify-between">
+          <h2 className="font-display text-2xl md:text-5xl font-semibold">
+            Room Options <span className="text-muted-foreground font-normal text-xl md:text-2xl">(1)</span>
+          </h2>
+          <div className="flex items-center gap-2 text-xs md:text-sm">
+            <span className="px-2.5 py-1 md:px-3 md:py-1.5 rounded-full bg-secondary/10 text-secondary font-medium">Free Cancellation</span>
+            <span className="px-2.5 py-1 md:px-3 md:py-1.5 rounded-full bg-accent/10 text-accent font-medium">₹0 Payment</span>
+          </div>
         </div>
       </motion.div>
 
@@ -42,10 +44,10 @@ export const Rooms = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="grid lg:grid-cols-[420px_1fr_280px] gap-0 rounded-3xl overflow-hidden bg-card border border-border shadow-elegant hover:shadow-glow transition-shadow duration-700"
+        className="rounded-3xl overflow-hidden bg-card border border-border shadow-elegant hover:shadow-glow transition-shadow duration-700"
       >
         {/* Image */}
-        <div className="relative h-64 lg:h-auto overflow-hidden group">
+        <div className="relative h-56 md:h-72 lg:h-auto lg:aspect-[4/3] overflow-hidden group">
           <img
             src={room}
             alt="102 Cinemon room with queen bed and lake view"
@@ -60,39 +62,41 @@ export const Rooms = () => (
           </div>
         </div>
 
-        {/* Details */}
-        <div className="p-6 lg:p-8 border-t lg:border-t-0 lg:border-l border-border">
-          <h3 className="font-display text-2xl font-semibold mb-1">102 Cinemon</h3>
-          <p className="text-sm text-accent font-medium mb-4">Lake View · Sleeps 2</p>
+        <div className="lg:grid lg:grid-cols-[1fr_280px]">
+          {/* Details */}
+          <div className="p-5 md:p-8 border-b lg:border-b-0 lg:border-r border-border">
+            <h3 className="font-display text-xl md:text-2xl font-semibold mb-1">102 Cinemon</h3>
+            <p className="text-sm text-accent font-medium mb-4">Lake View · Sleeps 2</p>
 
-          <div className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory gap-3 mb-6 pb-2 -mx-6 px-6 lg:mx-0 lg:px-0">
-            {features.map((f) => (
-              <div key={f.label} className="flex flex-col items-center justify-center gap-2 p-3 rounded-2xl bg-muted/40 border border-border/50 min-w-[80px] snap-center flex-shrink-0 text-center">
-                <f.icon className="h-5 w-5 text-secondary" />
-                <span className="text-[10px] leading-tight text-muted-foreground font-medium">{f.label}</span>
-              </div>
-            ))}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-5">
+              {features.map((f) => (
+                <div key={f.label} className="flex items-center gap-2 py-1.5">
+                  <f.icon className="h-4 w-4 text-secondary flex-shrink-0" />
+                  <span className="text-xs md:text-sm text-muted-foreground">{f.label}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="space-y-1 text-sm border-t border-border pt-4">
+              <p className="text-secondary font-medium">✓ Free Cancellation before 05 May 01:59 PM</p>
+              <p className="text-muted-foreground">Mineral water — additional charge</p>
+            </div>
           </div>
 
-          <div className="space-y-1 text-sm border-t border-border pt-4">
-            <p className="text-secondary font-medium">✓ Free Cancellation before 05 May 01:59 PM</p>
-            <p className="text-muted-foreground">Mineral water — additional charge</p>
+          {/* Contact Info */}
+          <div className="p-5 md:p-8 bg-muted/40 flex flex-col justify-center gap-4">
+            <div>
+              <p className="font-display text-xl md:text-2xl font-semibold">Contact to Book</p>
+              <p className="text-sm text-muted-foreground mt-1">Get the best rates by reaching out to us directly.</p>
+            </div>
+            <a href="https://wa.me/911234567890" target="_blank" rel="noreferrer" className="w-full inline-flex items-center justify-center gap-2 h-11 rounded-xl bg-[#25D366] text-white font-semibold hover:bg-[#128C7E] transition-all shadow-soft group">
+              WhatsApp Us
+              <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="tel:+911234567890" className="w-full inline-flex items-center justify-center gap-2 h-11 rounded-xl border-2 border-primary text-primary font-semibold hover:bg-primary/5 transition-all shadow-soft">
+              Call Us
+            </a>
           </div>
-        </div>
-
-        {/* Contact Info */}
-        <div className="p-6 lg:p-8 bg-muted/40 border-t lg:border-t-0 lg:border-l border-border flex flex-col justify-center gap-4">
-          <div>
-            <p className="font-display text-2xl font-semibold">Contact to Book</p>
-            <p className="text-sm text-muted-foreground mt-1">Get the best rates by reaching out to us directly.</p>
-          </div>
-          <a href="https://wa.me/911234567890" target="_blank" rel="noreferrer" className="w-full inline-flex items-center justify-center gap-2 h-11 rounded-xl bg-[#25D366] text-white font-semibold hover:bg-[#128C7E] transition-all shadow-soft group">
-            WhatsApp Us
-            <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </a>
-          <a href="tel:+911234567890" className="w-full inline-flex items-center justify-center gap-2 h-11 rounded-xl border-2 border-primary text-primary font-semibold hover:bg-primary/5 transition-all shadow-soft">
-            Call Us
-          </a>
         </div>
       </motion.article>
     </div>

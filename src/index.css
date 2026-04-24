@@ -152,4 +152,8 @@
 
   .scrollbar-hide::-webkit-scrollbar { display: none; }
   .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .pause-marquee { animation-play-state: paused; }
+  .animate-marquee:hover { animation-play-state: paused; }
+  .animate-marquee:active { animation-play-state: paused; }
 }
