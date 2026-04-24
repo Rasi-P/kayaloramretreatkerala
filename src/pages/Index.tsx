@@ -1,13 +1,10 @@
 import { Header } from "@/components/site/Header";
-import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { HeroGallery } from "@/components/site/HeroGallery";
-import { BookingBar } from "@/components/site/BookingBar";
 import { Overview } from "@/components/site/Overview";
 import { Rooms } from "@/components/site/Rooms";
 import { Host } from "@/components/site/Host";
 import { Location } from "@/components/site/Location";
 import { Rules } from "@/components/site/Rules";
-import { SimilarProperties } from "@/components/site/SimilarProperties";
 import { FAQ } from "@/components/site/FAQ";
 import { AttractionsMarquee } from "@/components/site/AttractionsMarquee";
 import { Footer } from "@/components/site/Footer";
@@ -25,16 +22,13 @@ const Index = () => {
 
       <div className="min-h-screen bg-background">
         <Header />
-        <main>
-          <Breadcrumbs />
+        <main className="pt-24 md:pt-28">
           <HeroGallery />
-          <BookingBar />
           <Overview />
           <Rooms />
           <Host />
           <Location />
           <Rules />
-          <SimilarProperties />
           <FAQ />
           <AttractionsMarquee />
         </main>

@@ -35,8 +35,8 @@ export const HeroGallery = () => {
           </h1>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4 text-accent" /> Alappuzha, Kerala · 35.5 km from city centre</span>
-            <span className="inline-flex items-center gap-1.5"><Bed className="h-4 w-4 text-accent" /> 1 Queen Bed</span>
-            <span className="inline-flex items-center gap-1.5"><Users className="h-4 w-4 text-accent" /> Sleeps 2 (+1 extra)</span>
+            <span className="inline-flex items-center gap-1.5"><Bed className="h-4 w-4 text-accent" /> 1 Bedroom · 1 Queen Bed</span>
+            <span className="inline-flex items-center gap-1.5"><Users className="h-4 w-4 text-accent" /> Sleeps 2 (+2 extra)</span>
           </div>
         </div>
 
@@ -82,7 +82,7 @@ export const HeroGallery = () => {
           {/* View all photos button */}
           <button className="absolute bottom-4 right-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-background/95 backdrop-blur text-foreground text-sm font-medium shadow-elegant hover:bg-background transition-all hover:scale-105">
             <Camera className="h-4 w-4" />
-            View all 34 photos
+            View all 35 photos
           </button>
 
           {/* Mobile preview strip */}

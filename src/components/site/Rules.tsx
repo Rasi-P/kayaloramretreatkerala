@@ -17,8 +17,8 @@ export const Rules = () => (
 
     <div className="grid md:grid-cols-2 gap-4 mb-8">
       {[
-        { icon: Clock, label: "Check-in", value: "2:00 PM – 10:00 PM" },
-        { icon: Clock, label: "Check-out", value: "12:00 PM" },
+        { icon: Clock, label: "Check-in", value: "2:00 PM" },
+        { icon: Clock, label: "Check-out", value: "11:00 AM" },
       ].map((c, i) => (
         <motion.div
           key={c.label}
@@ -71,9 +71,12 @@ export const Rules = () => (
           </span>
         </AccordionTrigger>
         <AccordionContent className="text-muted-foreground space-y-2 pb-5">
-          <p>✗ Pets are not allowed.</p>
-          <p>✓ Quiet hours after 10 PM, please respect the lake.</p>
-          <p>✓ Contact the property for any special requests after booking.</p>
+          <p>✗ Pets are not allowed. There are no pets living on the property.</p>
+          <p>✓ Smoking within the premises is allowed.</p>
+          <p>✓ Property is wheelchair accessible (guests must carry their own).</p>
+          <p>✓ Allows private parties or events.</p>
+          <p>✓ Caretaker greets you & helps you check-in. Smart Door self check-in available.</p>
+          <p>⚠ There are restrictions on entry & exit timings for guests. Please check with host.</p>
         </AccordionContent>
       </AccordionItem>
     </Accordion>

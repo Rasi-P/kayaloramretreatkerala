@@ -37,10 +37,10 @@ export const Host = () => (
           We provide guests with thoughtfully curated vacation rentals designed to meet every need. Each accommodation
           is fully furnished, and our on-site housekeeping team ensures your comfort and care.
         </p>
-        <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all text-sm font-medium">
+        <a href="https://wa.me/911234567890" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-primary/20 hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-all text-sm font-medium">
           <MessageCircle className="h-4 w-4" />
-          Login to Message Host
-        </button>
+          Message Host on WhatsApp
+        </a>
       </div>
     </motion.div>
   </section>

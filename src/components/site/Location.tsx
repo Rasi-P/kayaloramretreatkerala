@@ -6,7 +6,7 @@ import village from "@/assets/attraction-village.jpg";
 
 const attractions = [
   { name: "Vembanad Lake", distance: "9.2 km", img: lake },
-  { name: "Kumbalangi Village", distance: "11.8 km", img: village },
+  { name: "Kumbalangi", distance: "11.8 km", img: village },
   { name: "Marari Beach", distance: "14.5 km", img: beach },
 ];
 
@@ -85,15 +85,15 @@ export const Location = () => (
         <div className="rounded-2xl bg-card border border-border p-5 flex items-center gap-4">
           <div className="h-12 w-12 rounded-xl gradient-mist grid place-items-center text-primary"><Train className="h-5 w-5" /></div>
           <div>
-            <p className="font-semibold">Mararikkulam Railway Station</p>
-            <p className="text-sm text-muted-foreground">~ 3.5 km away</p>
+            <p className="font-semibold">Turavur Railway Station</p>
+            <p className="text-sm text-muted-foreground">4.9 km away</p>
           </div>
         </div>
         <div className="rounded-2xl bg-card border border-border p-5 flex items-center gap-4">
           <div className="h-12 w-12 rounded-xl gradient-mist grid place-items-center text-primary"><Plane className="h-5 w-5" /></div>
           <div>
-            <p className="font-semibold">Cochin International Airport</p>
-            <p className="text-sm text-muted-foreground">~ 78 km away</p>
+            <p className="font-semibold">Domestic Airport Kochi</p>
+            <p className="text-sm text-muted-foreground">48.8 km away</p>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Bed, Wifi, Sparkles, Droplets, BellRing, Sofa, ChevronRight } from "lucide-react";
+import { Bed, Wifi, Sparkles, Droplets, BellRing, Sofa, ChevronRight, Tv, Briefcase, Zap, Coffee, Newspaper } from "lucide-react";
 import room from "@/assets/room-1.jpg";
 
 const features = [
@@ -9,6 +9,12 @@ const features = [
   { icon: Droplets, label: "Laundry Service" },
   { icon: BellRing, label: "Room Service" },
   { icon: Sofa, label: "Seating Area" },
+  { icon: Briefcase, label: "Work Desk" },
+  { icon: Zap, label: "Charging Points" },
+  { icon: Coffee, label: "Kettle" },
+  { icon: Bed, label: "Woollen Blanket" },
+  { icon: Tv, label: "TV" },
+  { icon: Newspaper, label: "Newspaper" },
 ];
 
 export const Rooms = () => (
@@ -69,66 +75,26 @@ export const Rooms = () => (
           </div>
 
           <div className="space-y-1 text-sm border-t border-border pt-4">
-            <p className="text-secondary font-medium">✓ Free Cancellation before 03 May 01:59 PM</p>
+            <p className="text-secondary font-medium">✓ Free Cancellation before 05 May 01:59 PM</p>
             <p className="text-muted-foreground">Mineral water — additional charge</p>
           </div>
         </div>
 
-        {/* Price */}
-        <div className="p-6 lg:p-8 bg-muted/40 border-t lg:border-t-0 lg:border-l border-border flex flex-col justify-center">
+        {/* Contact Info */}
+        <div className="p-6 lg:p-8 bg-muted/40 border-t lg:border-t-0 lg:border-l border-border flex flex-col justify-center gap-4">
           <div>
-            <p className="text-xs text-muted-foreground line-through">₹4,966</p>
-            <p className="font-display text-3xl font-semibold">₹4,085</p>
-            <p className="text-xs text-muted-foreground mb-1">+ ₹596 taxes / night</p>
-            <p className="text-xs text-secondary font-medium mb-4">Book with ₹0</p>
+            <p className="font-display text-2xl font-semibold">Contact to Book</p>
+            <p className="text-sm text-muted-foreground mt-1">Get the best rates by reaching out to us directly.</p>
           </div>
-          <button className="w-full inline-flex items-center justify-center gap-2 h-11 rounded-xl bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-all hover:shadow-soft group">
-            Check Availability
+          <a href="https://wa.me/911234567890" target="_blank" rel="noreferrer" className="w-full inline-flex items-center justify-center gap-2 h-11 rounded-xl bg-[#25D366] text-white font-semibold hover:bg-[#128C7E] transition-all shadow-soft group">
+            WhatsApp Us
             <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </button>
-          <p className="text-center text-[10px] text-muted-foreground mt-2">Login to get this for ₹4,036 or less</p>
+          </a>
+          <a href="tel:+911234567890" className="w-full inline-flex items-center justify-center gap-2 h-11 rounded-xl border-2 border-primary text-primary font-semibold hover:bg-primary/5 transition-all shadow-soft">
+            Call Us
+          </a>
         </div>
       </motion.article>
-
-      {/* Flexi dates */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mt-8 rounded-3xl bg-card border border-border p-6"
-      >
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5">
-          <div>
-            <h3 className="font-display text-xl font-semibold">Are you flexible with travel dates?</h3>
-            <p className="text-sm text-muted-foreground">Find alternate prices with flexi dates.</p>
-          </div>
-          <button className="text-sm font-medium text-accent hover:underline self-start">Modify Dates →</button>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {[
-            { d: "Fri, 01 May", price: "₹4,966", note: "Expensive by ₹881" },
-            { d: "Sun, 10 May", price: "₹4,085", note: "Cheapest", best: true },
-            { d: "Tue, 12 May", price: "₹4,139", note: "" },
-            { d: "Fri, 22 May", price: "₹4,966", note: "Expensive by ₹881" },
-          ].map((item) => (
-            <div
-              key={item.d}
-              className={`p-4 rounded-2xl border transition-all hover-lift cursor-pointer ${
-                item.best
-                  ? "bg-secondary/10 border-secondary/40 ring-2 ring-secondary/20"
-                  : "bg-muted/40 border-border hover:border-accent/30"
-              }`}
-            >
-              <p className="text-xs text-muted-foreground">{item.d}</p>
-              <p className="font-display text-lg font-semibold mt-1">{item.price}</p>
-              <p className={`text-[11px] mt-1 ${item.best ? "text-secondary font-semibold" : "text-muted-foreground"}`}>
-                {item.note || "—"}
-              </p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
     </div>
   </section>
 );

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Search, Menu, MapPin } from "lucide-react";
+import { Search, Menu, Phone, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -7,7 +7,6 @@ const navItems = [
   { label: "Rooms", href: "#rooms" },
   { label: "Location", href: "#location" },
   { label: "Property Rules", href: "#rules" },
-  { label: "Similar Properties", href: "#similar" },
 ];
 
 export const Header = () => {
@@ -19,11 +18,9 @@ export const Header = () => {
       className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50"
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
-        <a href="#" className="flex items-center gap-2">
-          <div className="h-9 w-9 rounded-full gradient-lake grid place-items-center text-primary-foreground shadow-glow">
-            <MapPin className="h-4 w-4" />
-          </div>
-          <span className="font-display text-xl font-semibold tracking-tight">
+        <a href="#" className="flex items-center gap-3">
+          <img src="/logo-transparent.png" alt="Kayaloram Logo" className="h-14 md:h-16 w-auto object-contain" />
+          <span className="font-display text-2xl font-semibold tracking-tight">
             Kayaloram
           </span>
         </a>
@@ -45,9 +42,18 @@ export const Header = () => {
           <Button variant="ghost" size="icon" className="hidden md:inline-flex">
             <Search className="h-4 w-4" />
           </Button>
-          <Button variant="default" size="sm" className="hidden md:inline-flex bg-primary hover:bg-primary/90">
-            Login
-          </Button>
+          <a href="tel:+911234567890">
+            <Button variant="outline" size="sm" className="hidden md:inline-flex gap-2 mr-2">
+              <Phone className="h-4 w-4" />
+              Call
+            </Button>
+          </a>
+          <a href="https://wa.me/911234567890" target="_blank" rel="noreferrer">
+            <Button variant="default" size="sm" className="hidden md:inline-flex bg-[#25D366] hover:bg-[#128C7E] text-white gap-2">
+              <MessageCircle className="h-4 w-4" />
+              WhatsApp
+            </Button>
+          </a>
           <Button variant="ghost" size="icon" className="lg:hidden">
             <Menu className="h-5 w-5" />
           </Button>

@@ -10,13 +10,13 @@ const amenities = [
   { icon: Shield, label: "Power Backup" },
   { icon: Wifi, label: "Wi-Fi" },
   { icon: Wind, label: "Air Conditioning" },
-  { icon: Bath, label: "Hot Water" },
-  { icon: Coffee, label: "Tea / Coffee" },
-  { icon: Tv, label: "Television" },
-  { icon: Sparkles, label: "Housekeeping" },
-  { icon: Droplets, label: "Laundry Service" },
-  { icon: Car, label: "Free Parking" },
+  { icon: Bath, label: "Hot Water & Geyser" },
+  { icon: Coffee, label: "Electric Kettle" },
+  { icon: Tv, label: "LED Television" },
   { icon: BellRing, label: "Room Service" },
+  { icon: Car, label: "Parking" },
+  { icon: Sparkles, label: "Washing Machine" },
+  { icon: Droplets, label: "Laundry Service" },
 ];
 
 const fadeUp: Variants = {
@@ -42,16 +42,25 @@ export const Overview = () => (
           <h2 className="font-display text-3xl md:text-5xl font-semibold mb-6 text-balance">
             Airy, light-filled spaces designed for <em className="text-accent not-italic">comfort and connection</em>.
           </h2>
-          <div className="space-y-4 text-muted-foreground leading-relaxed text-base md:text-lg max-w-2xl">
-            <p>
-              Step inside Bedroom <strong className="text-foreground">102 Cinemon</strong>, a private retreat tucked into the
-              palm-lined banks of the Vembanad backwaters. Wake to mist drifting over still water, brew your morning
-              coffee in your own kitchenette, and watch traditional snake-boats glide by from the lakefront deck.
-            </p>
-            <p>
-              The room features a plush queen bed, woven bamboo blinds, terracotta-tile floors and a private balcony
-              that frames the lake like a living painting. Our on-site caretaker is always close by — never intrusive,
-              always helpful.
+          <div className="space-y-6 text-muted-foreground leading-relaxed text-base md:text-lg max-w-2xl">
+            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <strong className="text-foreground block mb-1">Indoor Spaces</strong>
+              <p>Step inside to discover airy, light-filled spaces designed for comfort and connection. Bedroom 102 Cinemon is located on the ground floor and features a queen-size bed, lake view, en-suite bathroom, AC, wardrobe, work desk, and electric kettle. The expansive lawn area features a rain dance shower setup with music and lights—perfect for celebrations and group fun.</p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <strong className="text-foreground block mb-1">Unveiling the Homestay Spacious Living Experience</strong>
+              <p>Instead of enclosed walls, life here flows outdoors. Relax in the open lawn area, enjoy board games like carrom, or unwind with soft music under the open sky.</p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <strong className="text-foreground block mb-1">Modern Kitchen & Dining</strong>
+              <p>The kitchen is equipped for light cooking and heating. Complimentary drinking water (1L per room) is provided; additional water is available at ₹20 per liter.</p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <strong className="text-foreground block mb-1">Comfortable Bedrooms & Bathrooms</strong>
+              <p>The bedroom accommodates couples and 2 extra guests comfortably. The attached bathroom features modern fittings, geyser, shower, sink with mirror, exhaust fan, bath towels, and basic toiletries.</p>
+            </motion.div>
+            <p className="text-sm font-medium italic text-accent">
+              A caretaker is available at the property to assist guests for a comfortable stay and manage day-to-day upkeep.
             </p>
           </div>
         </motion.div>
@@ -112,27 +121,27 @@ const BookingCard = () => (
     </div>
     <div className="p-5 space-y-4">
       <div className="flex items-baseline gap-2">
-        <span className="text-sm text-muted-foreground line-through">₹4,966</span>
-        <span className="font-display text-3xl font-semibold text-foreground">₹4,085</span>
+        <span className="text-sm text-muted-foreground line-through">₹4,139</span>
+        <span className="font-display text-3xl font-semibold text-foreground">₹3,358</span>
         <span className="text-xs text-muted-foreground">/ night</span>
       </div>
-      <p className="text-xs text-muted-foreground">+ ₹596 taxes & fees</p>
+      <p className="text-xs text-muted-foreground">+ ₹414 taxes & fees</p>
 
       <div className="rounded-xl bg-secondary/10 border border-secondary/20 p-3 text-xs">
         <p className="font-semibold text-secondary mb-0.5">Deal Applied: WELCOMETRIP</p>
-        <p className="text-muted-foreground">Get ₹881 off your stay</p>
+        <p className="text-muted-foreground">Great Discounts for You. Get INR781 Off</p>
       </div>
 
       <ul className="space-y-2 text-sm">
-        <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-secondary" /> Free Cancellation before 03 May</li>
+        <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-secondary" /> Free Cancellation before 05 May 01:59 PM</li>
         <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-secondary" /> Book with ₹0 Payment</li>
-        <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-secondary" /> Login to save extra ₹49</li>
+        <li className="flex items-center gap-2 text-muted-foreground text-xs"><span className="h-1.5 w-1.5 rounded-full bg-muted-foreground/40" /> Pay before 04 May, 11:59 PM IST</li>
       </ul>
 
-      <button className="w-full h-12 rounded-2xl bg-accent text-accent-foreground font-semibold hover:bg-accent/90 transition-all hover:shadow-glow">
-        Check Availability
-      </button>
-      <p className="text-center text-xs text-muted-foreground">Add dates to confirm price</p>
+      <a href="https://wa.me/911234567890" target="_blank" rel="noreferrer" className="w-full flex items-center justify-center h-12 rounded-2xl bg-[#25D366] text-white font-semibold hover:bg-[#128C7E] transition-all shadow-soft hover:shadow-glow translate-y-0 hover:-translate-y-0.5">
+        WhatsApp Us
+      </a>
+      <p className="text-center text-xs text-muted-foreground">Contact us directly to unlock the best deals and offers</p>
     </div>
   </motion.div>
 );

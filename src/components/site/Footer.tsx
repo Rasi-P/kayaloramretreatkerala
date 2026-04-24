@@ -5,11 +5,9 @@ export const Footer = () => (
     <div className="container py-16">
       <div className="grid md:grid-cols-4 gap-10">
         <div>
-          <div className="flex items-center gap-2 mb-4">
-            <div className="h-9 w-9 rounded-full gradient-sunset grid place-items-center">
-              <MapPin className="h-4 w-4" />
-            </div>
-            <span className="font-display text-xl font-semibold">Kayaloram</span>
+          <div className="flex items-center gap-4 mb-4">
+            <img src="/logo-transparent.png" alt="Kayaloram Logo" className="h-16 md:h-20 w-auto object-contain brightness-0 invert" />
+            <span className="font-display text-2xl md:text-3xl font-semibold">Kayaloram</span>
           </div>
           <p className="text-sm opacity-75 leading-relaxed">
             Curated lakeside homestays on the Kerala backwaters. Powered by Homeyhuts.
