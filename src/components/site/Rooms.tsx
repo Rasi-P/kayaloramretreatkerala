@@ -34,7 +34,7 @@ export const Rooms = () => (
           </h2>
           <div className="flex items-center gap-2 text-xs md:text-sm">
             <span className="px-2.5 py-1 md:px-3 md:py-1.5 rounded-full bg-secondary/10 text-secondary font-medium">Free Cancellation</span>
-            <span className="px-2.5 py-1 md:px-3 md:py-1.5 rounded-full bg-accent/10 text-accent font-medium">₹0 Payment</span>
+            <span className="px-2.5 py-1 md:px-3 md:py-1.5 rounded-full bg-accent/10 text-accent font-medium">&#8377;0 Payment</span>
           </div>
         </div>
       </motion.div>
@@ -46,8 +46,8 @@ export const Rooms = () => (
         transition={{ duration: 0.7 }}
         className="rounded-3xl overflow-hidden bg-card border border-border shadow-elegant hover:shadow-glow transition-shadow duration-700"
       >
-        {/* Image */}
-        <div className="relative h-56 md:h-72 lg:h-auto lg:aspect-[4/3] overflow-hidden group">
+        {/* Mobile: image on top */}
+        <div className="relative h-56 md:h-72 lg:hidden overflow-hidden group">
           <img
             src={room}
             alt="102 Cinemon room with queen bed and lake view"
@@ -62,11 +62,29 @@ export const Rooms = () => (
           </div>
         </div>
 
-        <div className="lg:grid lg:grid-cols-[1fr_280px]">
+        {/* Desktop: image left, details middle, contact right */}
+        <div className="lg:grid lg:grid-cols-[360px_1fr_280px] lg:min-h-[320px]">
+
+          {/* Image — desktop only */}
+          <div className="hidden lg:block relative overflow-hidden group">
+            <img
+              src={room}
+              alt="102 Cinemon room with queen bed and lake view"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              width={1280}
+              height={896}
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/0 to-transparent" />
+            <div className="absolute bottom-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-background/90 text-xs font-medium">
+              6 photos
+            </div>
+          </div>
+
           {/* Details */}
           <div className="p-5 md:p-8 border-b lg:border-b-0 lg:border-r border-border">
             <h3 className="font-display text-xl md:text-2xl font-semibold mb-1">102 Cinemon</h3>
-            <p className="text-sm text-accent font-medium mb-4">Lake View · Sleeps 2</p>
+            <p className="text-sm text-accent font-medium mb-4">Lake View &middot; Sleeps 2</p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-5">
               {features.map((f) => (
@@ -78,8 +96,8 @@ export const Rooms = () => (
             </div>
 
             <div className="space-y-1 text-sm border-t border-border pt-4">
-              <p className="text-secondary font-medium">✓ Free Cancellation before 05 May 01:59 PM</p>
-              <p className="text-muted-foreground">Mineral water — additional charge</p>
+              <p className="text-secondary font-medium">&#10003; Free Cancellation before 05 May 01:59 PM</p>
+              <p className="text-muted-foreground">Mineral water &mdash; additional charge</p>
             </div>
           </div>
 
@@ -97,6 +115,7 @@ export const Rooms = () => (
               Call Us
             </a>
           </div>
+
         </div>
       </motion.article>
     </div>
