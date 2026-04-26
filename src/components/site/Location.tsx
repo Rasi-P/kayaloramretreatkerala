@@ -1,135 +1,116 @@
-import { motion } from "framer-motion";
-import { MapPin, Navigation, Train, Plane } from "lucide-react";
-import lake from "@/assets/attraction-lake.jpg";
-import beach from "@/assets/attraction-beach.jpg";
-import village from "@/assets/attraction-village.jpg";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, MapPin } from "lucide-react";
+import g1 from "@/assets/gallery-1.jpg";
+import g2 from "@/assets/gallery-2.jpg";
+import room1 from "@/assets/room-1.jpg";
+import heroImg from "@/assets/hero-lake.jpg";
 
-const attractions = [
-  { name: "Vembanad Lake", distance: "9.2 km", img: lake },
-  { name: "Kumbalangi", distance: "11.8 km", img: village },
-  { name: "Marari Beach", distance: "14.5 km", img: beach },
+const topAttractions = [
+  { name: "Marari Beach", distance: "14 km Distance", img: g1 },
+  { name: "Alleppey Backwaters", distance: "3 km Distance", img: g2 },
+  { name: "Alappuzha Lighthouse", distance: "5 km Distance", img: room1 },
+  { name: "Vembanad Lake", distance: "1 km Distance", img: heroImg, isWide: true },
 ];
 
-export const Location = () => (
-  <section id="location" className="bg-gradient-to-b from-muted/30 to-background py-10 md:py-24">
-    <div className="container">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mb-8 md:mb-10"
-      >
-        <p className="text-xs uppercase tracking-[0.2em] text-accent font-semibold mb-3">Location</p>
-        <h2 className="font-display text-2xl md:text-5xl font-semibold">A quiet corner of <em className="text-accent not-italic">Alappuzha</em>.</h2>
-        <p className="text-muted-foreground mt-2 inline-flex items-center gap-1.5 text-sm">
-          <MapPin className="h-4 w-4 text-accent flex-shrink-0" /> 688532, Alappuzha · 35.5 km from city centre
-        </p>
-      </motion.div>
+const allAttractions = [
+  "Marari Beach", "Vembanad Lake", "Vijay Beach Park", "Vikasanam Beach",
+  "Alleppey Backwaters", "International Coir Museum", "Alleppey Boat House Center",
+  "Sahrudaya Hospital", "Ravi Karunakaran Museum", "Alleppey Tourism Development Centre",
+  "Mullakkal Temple", "Income Tax Office", "Canal Bazaar", "Commercial Canal",
+  "CSI Church", "Houseboat Cruise around", "Alappuzha Lighthouse",
+  "Alappuzha Boat House", "Ramavarma District Club", "Sea View Park"
+];
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.98 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-        className="relative h-[220px] md:h-[420px] rounded-2xl md:rounded-3xl overflow-hidden shadow-elegant border border-border group cursor-pointer"
-      >
-        <iframe
-          src="https://www.openstreetmap.org/export/embed.html?bbox=76.2,9.4,76.5,9.7&layer=mapnik&marker=9.5,76.35"
-          className="w-full h-full border-0"
-          loading="lazy"
-          title="Property location map"
-        />
-        <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-primary/5" />
-        <button className="absolute top-3 right-3 md:top-4 md:right-4 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-background/95 backdrop-blur text-xs md:text-sm font-medium shadow-soft hover:scale-105 transition-transform">
-          View Full Map
-        </button>
-      </motion.div>
+export const Location = () => {
+  const [showAll, setShowAll] = useState(false);
 
-      {/* Attractions */}
-      <div className="mt-10 md:mt-12">
-        <h3 className="font-display text-xl md:text-3xl font-semibold mb-5 md:mb-6">Top Attractions Nearby</h3>
+  return (
+    <section id="destinations" className="py-16 md:py-24 bg-white relative overflow-hidden">
+      {/* Topo Map Background Pattern (subtle) */}
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg width=\\'60\\' height=\\'60\\' viewBox=\\'0 0 60 60\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cg fill=\\'none\\' fill-rule=\\'evenodd\\'%3E%3Cg fill=\\'%23112a29\\' fill-opacity=\\'1\\'%3E%3Cpath d=\\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')" }} />
 
-        {/* Mobile: auto-scroll marquee + manual scroll */}
-        <div className="sm:hidden overflow-hidden relative -mx-4">
-          <div className="overflow-x-auto scrollbar-hide">
-            <div className="flex gap-4 animate-marquee w-max px-4">
-              {[...attractions, ...attractions].map((a, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="group relative h-52 w-64 flex-shrink-0 rounded-2xl overflow-hidden block shadow-soft"
-                >
-                  <img
-                    src={a.img}
-                    alt={a.name}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    width={1024}
-                    height={768}
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 text-primary-foreground">
-                    <p className="font-display text-lg font-semibold">{a.name}</p>
-                    <p className="text-sm opacity-90 inline-flex items-center gap-1 mt-0.5">
-                      <Navigation className="h-3 w-3" /> {a.distance}
-                    </p>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
+      <div className="container px-4 mx-auto max-w-6xl relative z-10 text-center">
+        
+        {/* Header */}
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-dancing text-3xl text-[#4a5568] mb-1"
+          style={{ fontFamily: "'Dancing Script', cursive" }}
+        >
+          Top Destination
+        </motion.p>
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-3xl md:text-5xl font-bold text-[#112a29] mb-12"
+        >
+          Our Featured Destination
+        </motion.h2>
 
-        {/* Desktop: grid */}
-        <div className="hidden sm:grid sm:grid-cols-3 gap-4 md:gap-5">
-          {attractions.map((a, i) => (
-            <motion.a
-              key={a.name}
-              href="#"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+        {/* Gallery Grid */}
+        <div className="flex flex-col md:flex-row gap-4 h-[600px] md:h-[450px] w-full max-w-5xl mx-auto mb-10">
+          
+          {/* Narrow Vertical Cards */}
+          {topAttractions.filter(a => !a.isWide).map((attr, idx) => (
+            <motion.div 
+              key={idx}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group relative h-64 md:h-72 rounded-3xl overflow-hidden block shadow-soft hover:shadow-elegant transition-all"
+              transition={{ delay: 0.2 + idx * 0.1 }}
+              className="relative flex-1 md:w-32 rounded-3xl overflow-hidden group shadow-lg cursor-pointer transition-all duration-500 hover:flex-[1.5]"
             >
-              <img
-                src={a.img}
-                alt={a.name}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                width={1024}
-                height={768}
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 text-primary-foreground">
-                <p className="font-display text-xl font-semibold">{a.name}</p>
-                <p className="text-sm opacity-90 inline-flex items-center gap-1 mt-0.5">
-                  <Navigation className="h-3 w-3" /> {a.distance}
-                </p>
+              <img src={attr.img} alt={attr.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              
+              {/* Rotated Text Container for Desktop, Normal for Mobile */}
+              <div className="absolute inset-0 p-6 flex flex-col justify-end items-center md:items-start">
+                <div className="md:absolute md:bottom-6 md:left-6 md:origin-bottom-left md:-rotate-90 md:translate-y-full flex flex-row items-center gap-2 whitespace-nowrap">
+                  <h3 className="text-white font-bold text-xl md:text-2xl tracking-wide">{attr.name}</h3>
+                  <span className="text-white/80 text-sm font-medium border-l border-white/40 pl-2 ml-2">{attr.distance}</span>
+                </div>
               </div>
-            </motion.a>
+            </motion.div>
           ))}
-        </div>
-      </div>
 
-      {/* Transport */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mt-6 md:mt-8">
-        <div className="rounded-2xl bg-card border border-border p-4 md:p-5 flex items-center gap-4">
-          <div className="h-11 w-11 md:h-12 md:w-12 rounded-xl gradient-mist grid place-items-center text-primary flex-shrink-0"><Train className="h-5 w-5" /></div>
-          <div>
-            <p className="font-semibold text-sm md:text-base">Turavur Railway Station</p>
-            <p className="text-xs md:text-sm text-muted-foreground">4.9 km away</p>
-          </div>
+          {/* Wide Card */}
+          {topAttractions.filter(a => a.isWide).map((attr, idx) => (
+            <motion.div 
+              key={idx}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="relative flex-[3] rounded-3xl overflow-hidden group shadow-lg cursor-pointer"
+            >
+              <img src={attr.img} alt={attr.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              
+              <div className="absolute bottom-8 left-8 text-left">
+                <h3 className="text-white font-bold text-3xl mb-1">{attr.name}</h3>
+                <span className="text-white/80 text-sm font-medium">{attr.distance}</span>
+              </div>
+            </motion.div>
+          ))}
+
         </div>
-        <div className="rounded-2xl bg-card border border-border p-4 md:p-5 flex items-center gap-4">
-          <div className="h-11 w-11 md:h-12 md:w-12 rounded-xl gradient-mist grid place-items-center text-primary flex-shrink-0"><Plane className="h-5 w-5" /></div>
-          <div>
-            <p className="font-semibold text-sm md:text-base">Domestic Airport Kochi</p>
-            <p className="text-xs md:text-sm text-muted-foreground">48.8 km away</p>
-          </div>
-        </div>
+
+        {/* More Button */}
+        <Link 
+          to="/destinations"
+          className="inline-flex items-center gap-2 bg-[#124b49] hover:bg-[#0c302d] text-white px-8 py-3.5 rounded-full font-medium transition-colors shadow-lg mt-8"
+        >
+          More <ArrowRight className="w-4 h-4 transition-transform" />
+        </Link>
+
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
+

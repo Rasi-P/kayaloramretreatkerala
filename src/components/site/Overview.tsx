@@ -1,147 +1,139 @@
-import { motion, type Variants } from "framer-motion";
-import {
-  Wifi, Coffee, Wind, Tv, Bath, Car, Shield, KeySquare,
-  UtensilsCrossed, Sparkles, Droplets, BellRing, MessageCircle
-} from "lucide-react";
-
-const amenities = [
-  { icon: KeySquare, label: "Caretaker & Key" },
-  { icon: UtensilsCrossed, label: "Kitchenette" },
-  { icon: Shield, label: "Power Backup" },
-  { icon: Wifi, label: "Wi-Fi" },
-  { icon: Wind, label: "Air Conditioning" },
-  { icon: Bath, label: "Hot Water & Geyser" },
-  { icon: Coffee, label: "Electric Kettle" },
-  { icon: Tv, label: "LED Television" },
-  { icon: BellRing, label: "Room Service" },
-  { icon: Car, label: "Parking" },
-  { icon: Sparkles, label: "Washing Machine" },
-  { icon: Droplets, label: "Laundry Service" },
-];
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.04, ease: [0.22, 1, 0.36, 1] as const },
-  }),
-};
+import { motion } from "framer-motion";
+import { BedDouble, Users, ArrowRight } from "lucide-react";
+import heroImg from "@/assets/hero-lake.jpg";
+import room1 from "@/assets/room-1.jpg";
+import g1 from "@/assets/gallery-1.jpg";
 
 export const Overview = () => (
-  <section id="overview" className="container py-10 md:py-24">
-    <div className="grid lg:grid-cols-[1fr_420px] gap-12">
-      <div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-xs uppercase tracking-[0.2em] text-accent font-semibold mb-3">About the property</p>
-          <h2 className="font-display text-2xl md:text-5xl font-semibold mb-5 text-balance">
-            Airy, light-filled spaces designed for <em className="text-accent not-italic">comfort and connection</em>.
-          </h2>
-          <div className="space-y-5 text-muted-foreground leading-relaxed text-sm md:text-lg max-w-2xl">
-            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <strong className="text-foreground block mb-1">Indoor Spaces</strong>
-              <p>Step inside to discover airy, light-filled spaces designed for comfort and connection. Bedroom 102 Cinemon is located on the ground floor and features a queen-size bed, lake view, en-suite bathroom, AC, wardrobe, work desk, and electric kettle. The expansive lawn area features a rain dance shower setup with music and lights—perfect for celebrations and group fun.</p>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <strong className="text-foreground block mb-1">Unveiling the Homestay Spacious Living Experience</strong>
-              <p>Instead of enclosed walls, life here flows outdoors. Relax in the open lawn area, enjoy board games like carrom, or unwind with soft music under the open sky.</p>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <strong className="text-foreground block mb-1">Modern Kitchen & Dining</strong>
-              <p>The kitchen is equipped for light cooking and heating. Complimentary drinking water (1L per room) is provided; additional water is available at ₹20 per liter.</p>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <strong className="text-foreground block mb-1">Comfortable Bedrooms & Bathrooms</strong>
-              <p>The bedroom accommodates couples and 2 extra guests comfortably. The attached bathroom features modern fittings, geyser, shower, sink with mirror, exhaust fan, bath towels, and basic toiletries.</p>
-            </motion.div>
-            <p className="text-sm font-medium italic text-accent">
-              A caretaker is available at the property to assist guests for a comfortable stay and manage day-to-day upkeep.
-            </p>
-          </div>
-        </motion.div>
+  <section id="about-us" className="w-full py-16 md:py-24 bg-[#eefaf8] relative overflow-hidden">
+    {/* Subtle Background Pattern (Optional, using CSS pattern) */}
+    <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#0f3c3a_1px,transparent_1px)] [background-size:20px_20px]" />
 
-        {/* Amenities grid */}
-        <div className="mt-10 md:mt-12">
-          <div className="flex items-end justify-between mb-5">
-            <h3 className="font-display text-xl md:text-3xl font-semibold">Amenities</h3>
-            <button className="text-sm font-medium text-accent hover:underline">View All →</button>
+    <div className="container px-4 mx-auto max-w-7xl relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        
+        {/* Left Side: Image Mosaic */}
+        <div className="grid grid-cols-2 gap-4 h-[500px] md:h-[600px]">
+          {/* Tall Left Image */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="h-full relative overflow-hidden rounded-tl-[80px] rounded-br-[80px] rounded-tr-xl rounded-bl-xl shadow-lg"
+          >
+            <img src={heroImg} alt="Kayaloram Exterior" className="w-full h-full object-cover" />
+          </motion.div>
+          
+          {/* Two Stacked Right Images */}
+          <div className="flex flex-col gap-4 h-full">
+            <motion.div 
+              initial={{ opacity: 0, y: -30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex-1 relative overflow-hidden rounded-tl-[60px] rounded-br-[60px] rounded-tr-xl rounded-bl-xl shadow-lg"
+            >
+              <img src={room1} alt="Kayaloram Room" className="w-full h-full object-cover" />
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex-1 relative overflow-hidden rounded-tl-[60px] rounded-br-[60px] rounded-tr-xl rounded-bl-xl shadow-lg"
+            >
+              <img src={g1} alt="Kayaloram Pool" className="w-full h-full object-cover" />
+            </motion.div>
           </div>
-          <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 md:gap-3 lg:grid-cols-4">
-            {amenities.map((a, i) => (
-              <motion.div
-                key={a.label}
-                custom={i}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, margin: "-50px" }}
-                variants={fadeUp}
-                className="group flex flex-col items-center gap-2 p-3 md:p-4 rounded-2xl bg-card border border-border/60 hover:border-accent/40 hover-lift cursor-default text-center"
-              >
-                <div className="h-9 w-9 md:h-10 md:w-10 rounded-xl gradient-mist grid place-items-center text-primary group-hover:gradient-sunset group-hover:text-accent-foreground transition-all duration-500">
-                  <a.icon className="h-4 w-4" />
-                </div>
-                <span className="text-[10px] md:text-xs font-medium leading-tight">{a.label}</span>
-              </motion.div>
-            ))}
+        </div>
+
+        {/* Right Side: Text & Features */}
+        <div className="flex flex-col items-start text-left">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-dancing text-3xl text-[#4a5568] mb-1"
+            style={{ fontFamily: "'Dancing Script', cursive" }}
+          >
+            Let's Go Together
+          </motion.p>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl font-bold text-[#112a29] mb-6"
+          >
+            Welcome to Kayaloram
+          </motion.h2>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-gray-600 text-sm md:text-base leading-relaxed mb-10"
+          >
+            Discover the essence of tranquility at Kayaloram Retreat Kerala,
+            ideally situated on the banks of the backwaters. Embraced by the
+            serenity of nature, our resort offers a sanctuary for those seeking an
+            escape from the hustle and bustle of city life. Immerse yourself in
+            the lush greenery that envelops our resort, creating an eco-friendly
+            haven for all our guests to enjoy.
+          </motion.p>
+
+          <div className="flex flex-col gap-8 w-full mb-10">
+            {/* Feature 1 */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="flex items-start gap-5"
+            >
+              <div className="w-14 h-14 rounded-full bg-[#1da855] flex-shrink-0 flex items-center justify-center text-white shadow-md">
+                <BedDouble className="w-7 h-7" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-[#112a29] mb-1">Rooms & Resort</h3>
+                <p className="text-gray-500 text-sm">Relaxing Rooms & Luxury Resort for Your Perfect Getaway.</p>
+              </div>
+            </motion.div>
+
+            {/* Feature 2 */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="flex items-start gap-5"
+            >
+              <div className="w-14 h-14 rounded-full bg-[#1da855] flex-shrink-0 flex items-center justify-center text-white shadow-md">
+                <Users className="w-7 h-7" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-[#112a29] mb-1">Best Staffs</h3>
+                <p className="text-gray-500 text-sm">Caring Staff, Memorable Moments, People Who Perfect Your Stay.</p>
+              </div>
+            </motion.div>
           </div>
+
+          <motion.a 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            href="#rooms" 
+            className="flex items-center gap-2 bg-[#124b49] hover:bg-[#0c302d] text-white px-8 py-3.5 rounded-full font-medium transition-colors"
+          >
+            Learn More <ArrowRight className="w-4 h-4 ml-1" />
+          </motion.a>
         </div>
       </div>
-
-      {/* Sticky booking card desktop */}
-      <aside className="hidden lg:block">
-        <div className="sticky top-28">
-          <ContactCard />
-        </div>
-      </aside>
-    </div>
-
-    {/* Mobile booking card */}
-    <div className="lg:hidden mt-8">
-      <ContactCard />
     </div>
   </section>
 );
 
-const ContactCard = () => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6 }}
-    className="rounded-3xl bg-card border border-border shadow-elegant overflow-hidden"
-  >
-    <div className="gradient-lake p-5 text-primary-foreground">
-      <p className="text-xs uppercase tracking-widest opacity-80">102 Cinemon · Lake View</p>
-      <p className="font-display text-lg font-medium mt-1">Fits 2 Adults</p>
-    </div>
-    <div className="p-5 space-y-4">
-      <div className="flex items-baseline gap-2">
-        <span className="text-sm text-muted-foreground line-through">₹4,139</span>
-        <span className="font-display text-3xl font-semibold text-foreground">₹3,358</span>
-        <span className="text-xs text-muted-foreground">/ night</span>
-      </div>
-      <p className="text-xs text-muted-foreground">+ ₹414 taxes & fees</p>
 
-      <div className="rounded-xl bg-secondary/10 border border-secondary/20 p-3 text-xs">
-        <p className="font-semibold text-secondary mb-0.5">Deal Applied: WELCOMETRIP</p>
-        <p className="text-muted-foreground">Great Discounts for You. Get INR781 Off</p>
-      </div>
-
-      <ul className="space-y-2 text-sm">
-        <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-secondary flex-shrink-0" /> Free Cancellation before 05 May 01:59 PM</li>
-        <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-secondary flex-shrink-0" /> Book with ₹0 Payment</li>
-        <li className="flex items-center gap-2 text-muted-foreground text-xs"><span className="h-1.5 w-1.5 rounded-full bg-muted-foreground/40 flex-shrink-0" /> Pay before 04 May, 11:59 PM IST</li>
-      </ul>
-
-      <a href="https://wa.me/911234567890" target="_blank" rel="noreferrer" className="w-full flex items-center justify-center h-12 rounded-2xl bg-[#25D366] text-white font-semibold hover:bg-[#128C7E] transition-all shadow-soft hover:shadow-glow">
-        WhatsApp Us
-      </a>
-      <p className="text-center text-xs text-muted-foreground">Contact us directly to unlock the best deals and offers</p>
-    </div>
-  </motion.div>
-);

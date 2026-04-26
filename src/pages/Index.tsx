@@ -2,35 +2,36 @@ import { Header } from "@/components/site/Header";
 import { HeroGallery } from "@/components/site/HeroGallery";
 import { Overview } from "@/components/site/Overview";
 import { Rooms } from "@/components/site/Rooms";
-import { Host } from "@/components/site/Host";
+import { NatureSection } from "@/components/site/NatureSection";
+import { Amenities } from "@/components/site/Amenities";
 import { Location } from "@/components/site/Location";
-import { Rules } from "@/components/site/Rules";
-import { FAQ } from "@/components/site/FAQ";
-import { AttractionsMarquee } from "@/components/site/AttractionsMarquee";
+import { GallerySection } from "@/components/site/GallerySection";
+import { Testimonials } from "@/components/site/Testimonials";
 import { Footer } from "@/components/site/Footer";
 
 const Index = () => {
   return (
     <>
       {/* SEO */}
-      <title>Kayaloram Retreat Kerala — 102 Cinemon Lake View Homestay | Alleppey</title>
+      <title>Kayaloram Retreat Kerala</title>
       <meta
         name="description"
-        content="Book 102 Cinemon at Kayaloram Retreat — a lakefront homestay on Kerala's backwaters in Alleppey. Queen bed, free cancellation, ₹4,085/night."
+        content="Book Kayaloram Retreat — a lakefront homestay on Kerala's backwaters in Alleppey."
       />
       <link rel="canonical" href="/" />
 
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-[#F8FAFC]">
+        {/* We use a lighter background as seen in the mockup for the main body */}
         <Header />
-        <main className="pt-24 md:pt-28">
+        <main className="w-full">
           <HeroGallery />
           <Overview />
           <Rooms />
-          <Host />
+          <NatureSection />
+          <Amenities />
           <Location />
-          <Rules />
-          <FAQ />
-          <AttractionsMarquee />
+          <GallerySection />
+          <Testimonials />
         </main>
         <Footer />
       </div>
@@ -39,3 +40,4 @@ const Index = () => {
 };
 
 export default Index;
+

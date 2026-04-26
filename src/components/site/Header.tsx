@@ -1,95 +1,114 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, MessageCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
-const navItems = [
-  { label: "Overview", href: "#overview" },
-  { label: "Rooms", href: "#rooms" },
-  { label: "Location", href: "#location" },
-  { label: "Property Rules", href: "#rules" },
-];
+import { Menu, X, ArrowRight } from "lucide-react";
 
 export const Header = () => {
+  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: "HOME", path: "/" },
+    { name: "ABOUT US", path: "/#about-us" },
+    { name: "ROOMS", path: "/#rooms" },
+    { name: "DESTINATIONS", path: "/destinations" },
+    { name: "GALLERY", path: "/gallery" },
+    { name: "CONTACT", path: "/contact" },
+  ];
 
   return (
     <motion.header
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50"
+      transition={{ duration: 0.6 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-black/80 shadow-lg py-2 backdrop-blur-md" : "bg-transparent py-6"
+      }`}
     >
-      <div className="container flex items-center justify-between h-16 md:h-20">
-        <a href="#" className="flex items-center gap-2 md:gap-3">
-          <img src="/logo-transparent.png" alt="Kayaloram Logo" className="h-10 md:h-16 w-auto object-contain" />
-          <span className="font-display text-xl md:text-2xl font-semibold tracking-tight">Kayaloram</span>
+      <div className="container px-4 flex items-center justify-between mx-auto xl:max-w-[1400px]">
+        <a href="/" className="flex items-center gap-2 relative z-10">
+          {/* Logo */}
+          <img
+            src="/logo-transparent.png"
+            alt="Kayaloram Logo"
+            className="h-12 md:h-16 w-auto object-contain brightness-0 invert"
+          />
         </a>
 
-        <nav className="hidden lg:flex items-center gap-8">
-          {navItems.map((item) => (
-            <a key={item.label} href={item.href} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors relative group">
-              {item.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-500" />
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center gap-2 xl:gap-4 relative z-10">
+          {navLinks.map((item) => (
+            <a
+              key={item.name}
+              href={item.path}
+              className={`text-white text-[13px] font-bold tracking-wide transition-all px-4 py-2 rounded-full whitespace-nowrap ${
+                item.name === "HOME" ? "bg-white/20 backdrop-blur-sm" : "hover:bg-white/10"
+              }`}
+            >
+              {item.name}
             </a>
           ))}
         </nav>
 
-        <div className="flex items-center gap-1 md:gap-2">
-          <a href="tel:+911234567890" className="hidden md:block">
-            <Button variant="outline" size="icon" className="md:w-auto md:px-4 md:gap-2 h-9 w-9 md:h-10 rounded-full md:rounded-xl">
-              <Phone className="h-4 w-4" />
-              <span className="hidden md:inline">Call</span>
-            </Button>
+        {/* Book Now Button (Desktop) & Mobile Toggle */}
+        <div className="flex items-center gap-4 relative z-10">
+          <a
+            href="https://wa.me/911234567890"
+            target="_blank"
+            rel="noreferrer"
+            className="hidden lg:flex items-center gap-2 bg-[#2d7a3e] hover:bg-[#1f5c2c] text-white px-7 py-2.5 rounded-full font-bold text-sm tracking-wider transition-colors shadow-md"
+          >
+            BOOK NOW <ArrowRight className="w-4 h-4 ml-1" />
           </a>
-          <a href="https://wa.me/911234567890" target="_blank" rel="noreferrer" className="hidden md:block">
-            <Button variant="default" size="icon" className="bg-[#25D366] hover:bg-[#128C7E] text-white md:w-auto md:px-4 md:gap-2 h-9 w-9 md:h-10 rounded-full md:rounded-xl">
-              <MessageCircle className="h-4 w-4" />
-              <span className="hidden md:inline">WhatsApp</span>
-            </Button>
-          </a>
+
           <button
-            className="lg:hidden flex items-center justify-center h-9 w-9 rounded-full border border-border bg-background/60"
+            className="text-white p-2 lg:hidden bg-black/20 rounded-md backdrop-blur-sm"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            {mobileOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
           </button>
         </div>
+        
+        {/* Subtle dark gradient overlay at the top to ensure text is always readable even before scrolling, matching reference */}
+        {!scrolled && <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-transparent pointer-events-none -z-10" />}
       </div>
 
+      {/* Mobile Navigation Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden border-t border-border/50 bg-background/95 backdrop-blur-xl overflow-hidden"
+            className="lg:hidden bg-black/95 backdrop-blur-lg overflow-hidden border-t border-white/10"
           >
-            <div className="container py-4 flex flex-col gap-1">
-              {navItems.map((item) => (
+            <div className="container py-4 flex flex-col px-6">
+              {navLinks.map((item) => (
                 <a
-                  key={item.label}
-                  href={item.href}
+                  key={item.name}
+                  href={item.path}
                   onClick={() => setMobileOpen(false)}
-                  className="py-3 px-4 rounded-xl text-sm font-medium text-foreground hover:bg-muted transition-colors"
+                  className="py-4 text-white text-base font-bold tracking-wider border-b border-white/10 last:border-0"
                 >
-                  {item.label}
+                  {item.name}
                 </a>
               ))}
-              <div className="flex gap-2 mt-3 pt-3 border-t border-border/50">
-                <a href="tel:+911234567890" className="flex-1">
-                  <Button variant="outline" className="w-full gap-2 rounded-xl">
-                    <Phone className="h-4 w-4" /> Call Us
-                  </Button>
-                </a>
-                <a href="https://wa.me/911234567890" target="_blank" rel="noreferrer" className="flex-1">
-                  <Button className="w-full gap-2 rounded-xl bg-[#25D366] hover:bg-[#128C7E] text-white">
-                    <MessageCircle className="h-4 w-4" /> WhatsApp
-                  </Button>
-                </a>
-              </div>
+              <a
+                href="https://wa.me/911234567890"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-6 flex items-center justify-center gap-2 bg-[#2d7a3e] text-white px-6 py-4 rounded-full font-bold tracking-wider"
+              >
+                BOOK NOW <ArrowRight className="w-5 h-5" />
+              </a>
             </div>
           </motion.div>
         )}
@@ -97,3 +116,6 @@ export const Header = () => {
     </motion.header>
   );
 };
+
+
+
